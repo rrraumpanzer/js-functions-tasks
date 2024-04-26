@@ -1,4 +1,4 @@
-import get from 'lodash/get.js';
+import get from 'lodash';
 
 const freeEmailDomains = [
   'gmail.com',
@@ -9,4 +9,18 @@ const freeEmailDomains = [
 
 // BEGIN
 
+const getFreeDomainsCount = (emails) => {
+  const domainsCount = {};
+
+  emails.forEach((email) => {
+      const domain = email.split('@')[1];
+      if (freeEmailDomains.includes(domain)) {
+          domainsCount[domain] = (domainsCount[domain] || 0) + 1;
+      }
+  });
+
+  return domainsCount;
+};
+
+export default getFreeDomainsCount;
 // END
